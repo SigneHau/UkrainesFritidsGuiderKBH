@@ -1,0 +1,356 @@
+"use client";
+
+import React, { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/context/LanguageContext";
+import { Plus, X } from "lucide-react"; // Ikoner til at tilføje og slette elementer
+
+interface Step5Props {
+  onBack: () => void;
+  onNext: (stepData: any) => void;
+  initialData: any;
+}
+
+export default function Step5({ onBack, onNext, initialData }: Step5Props) {
+  const { language } = useLanguage();
+  
+  // STATS: Gemmer de nuværende valg i dropdown-menuerne (Boks 1)
+  const [selectedMainSport, setSelectedMainSport] = useState<string>("");
+  const [selectedSubSport, setSelectedSubSport] = useState<string>("");
+  const [selectedLevel, setSelectedLevel] = useState<string>("");
+
+  // STATS: Listen over faste sportsgrene, som brugeren har tilføjet til sin "kurv"
+  const [chosenSports, setChosenSports] = useState<Record<string, string>>(
+    initialData.selections || {}
+  );
+
+  // STATS: Håndterer fritekst-feltet "Andet" (Boks 2)
+  const [customSportInput, setCustomSportInput] = useState<string>("");
+  const [customSportsList, setCustomSportsList] = useState<string[]>(
+    initialData.customSports || []
+  );
+
+  // SPROGTEKSTER: Skifter automatisk mellem Ukrainsk (ua) og Dansk (dk)
+
+  const t = {
+    titleUa: "Оберіть один або кілька видів занять та рівень",
+    titleDk: "Vælg en eller flere aktiviteter og niveau",
+    chooseSportUa: "Оберіть вид спорту:",
+    chooseSportDk: "Vælg sportsgren:",
+    chooseSubUa: "Оберіть напрямок:",
+    chooseSubDk: "Vælg specifik gren:",
+    chooseLevelUa: "Оберіть свій рівень:",
+    chooseLevelDk: "Vælg dit niveau:",
+    addUa: "Додати",
+    addDk: "Tilføj",
+    otherUa: "Інший вид спорту та рівень (напишіть тут):",
+    otherDk: "Anden sportsgren og niveau (skriv her):",
+    yourChoicesUa: "Ваш вибір:",
+    yourChoicesDk: "Dine valg:",
+    nextUa: "Далі",
+    nextDk: "Næste",
+    backUa: "Назад",
+    backDk: "Tilbage"
+  };
+
+   // DATAGRUNDLAG: Liste over alle sportsgrene og tilhørende underkategorier
+  const sportsDataExtended = [
+    {
+      ukr: "Ігри з м'ячем",
+      dan: "Boldspil",
+      subtypes: [
+        { ukr: "Футбол", dan: "Fodbold" },
+        { ukr: "Гандбол", dan: "Håndbold" },
+        { ukr: "Баскетбол", dan: "Basketball" },
+        { ukr: "Бадмінтон", dan: "Badminton" },
+        { ukr: "Теніс", dan: "Tennis" }
+      ]
+    },
+    { ukr: "Плавання", dan: "Svømning" },
+    { 
+      ukr: "Танець", 
+      dan: "Dans",
+      subtypes: [
+        { ukr: "Хіп-хоп", dan: "Hip hop" },
+        { ukr: "Вуличний танець (Стріт)", dan: "Street dance" },
+        { ukr: "Брейк-данс", dan: "Breakdance" },
+        { ukr: "Шоу-танець", dan: "Showdance" },
+        { ukr: "Сучасний танець", dan: "Modern" }
+      ]
+    },
+    { 
+      ukr: "Гімнастика", 
+      dan: "Gymnastik",
+      subtypes: [
+        { ukr: "Батут", dan: "Trampolin" },
+        { ukr: "Стрибки", dan: "Spring" },
+        { ukr: "Ритміка", dan: "Rytme" }
+      ]
+    },
+    { 
+      ukr: "Бойові мистецтва", 
+      dan: "Kampsport",
+      subtypes: [
+        { ukr: "Бокс", dan: "Boksning" },
+        { ukr: "Тхеквондо", dan: "Taekwondo" },
+        { ukr: "Дзюдо", dan: "Judo" },
+        { ukr: "Карате", dan: "Karate" },
+        { ukr: "Кікбоксинг", dan: "Kickboxing" },
+        { ukr: "Тайський бокс", dan: "Thaiboksning" }
+      ]
+    },
+    { ukr: "Йога", dan: "Yoga" },
+    { 
+      ukr: "Творчість та дозвілля", 
+      dan: "Kreativitet",
+      subtypes: [
+        { ukr: "Образотворче мистецтво", dan: "Billedkunst" },
+        { ukr: "Малювання", dan: "Maling" },
+        { ukr: "Кераміка", dan: "Keramik" },
+        { ukr: "Кулінарія", dan: "Madlavning" }
+      ]
+    },
+    {
+      ukr: "Музика",
+      dan: "Musik",
+      subtypes: [
+        { ukr: "Спів / Вокал", dan: "Sang / Vokal" },
+        { ukr: "Гітара", dan: "Guitar" },
+        { ukr: "Клавішні / Піаніно", dan: "Klaver / Keyboard" },
+        { ukr: "Ударні / Барабани", dan: "Trommer" },
+        { ukr: "Ансамбль / Група", dan: "Sammenspil / Band" }
+      ]
+    },
+    { ukr: "Велоспорт", dan: "Cykling" },
+    { ukr: "Кіберспорт", dan: "Esport" },
+    { ukr: "Фехтування", dan: "Fægtning" },
+    { ukr: "Скаутинг (Пласт)", dan: "Spejder" }
+  ];
+
+  const levelsData = [
+    { ukr: "Новачок", dan: "Begynder" },
+    { ukr: "Середній", dan: "Mellem" },
+    { ukr: "Просунутий", dan: "Øvet" }
+  ];
+
+  // LOGIK: Finder ud af, om den valgte sportsgren har underkategorier (subtypes)
+  const currentMainSportObj = sportsDataExtended.find(s => s.dan === selectedMainSport || s.ukr === selectedMainSport);
+  const hasSubtypes = currentMainSportObj && "subtypes" in currentMainSportObj;
+
+  // FUNKTION: Tilføjer valgt sport + niveau til listen (Boks 1)
+  const addSportToList = () => {
+    if (!selectedMainSport || !selectedLevel) return;
+    if (hasSubtypes && !selectedSubSport) return;
+
+    // Sætter navnet sammen hvis der er en underkategori (f.eks. "Boldspil - Fodbold")
+    const finalSportName = hasSubtypes ? `${selectedMainSport} - ${selectedSubSport}` : selectedMainSport;
+
+    setChosenSports(prev => ({
+      ...prev,
+      [finalSportName]: selectedLevel
+    }));
+
+    // Nulstiller dropdown-menuerne så brugeren kan vælge på ny
+    setSelectedMainSport("");
+    setSelectedSubSport("");
+    setSelectedLevel("");
+  };
+
+  // FUNKTION: Sletter en tilføjet sport fra listen via krydsknappen
+  const removeSportFromList = (keyToRemove: string) => {
+    const updated = { ...chosenSports };
+    delete updated[keyToRemove];
+    setChosenSports(updated);
+  };
+
+  // FUNKTION: Tilføjer fritekst fra "Andet"-feltet (Boks 2)
+  const addCustomSport = () => {
+    if (!customSportInput.trim()) return;
+    setCustomSportsList(prev => [...prev, customSportInput.trim()]);
+    setCustomSportInput(""); // Tømmer inputfeltet efter tilføjelse
+  };
+
+  // FUNKTION: Sletter et element fra "Andet"-listen
+  const removeCustomSport = (indexToRemove: number) => {
+    setCustomSportsList(prev => prev.filter((_, i) => i !== indexToRemove));
+  };
+
+  // FUNKTION: Sender data videre til næste step i flowet
+  const handleNextSubmit = () => {
+    if (!hasAtLeastOneSelection) return; // Sikkerhedsstop ligesom i step 4
+    onNext({
+      ...initialData,
+      selections: chosenSports, // Gemmer listen med valgte sportsgrene og niveauer
+      customSports: customSportsList, // Gemmer listen med egne indtastninger
+      category: "B2B"
+    });
+  };
+
+  // VALIDERING: Tjekker om der er valgt mindst én ting i alt (ellers skal knappen låses)
+  const hasAtLeastOneSelection = Object.keys(chosenSports).length > 0 || customSportsList.length > 0;
+  const isInvalid = !hasAtLeastOneSelection;
+
+  return (
+    <div className="flex flex-col items-center animate-in fade-in slide-in-from-bottom-4 duration-500 w-full pb-20 text-center">
+      <div className="max-w-md w-full space-y-6">
+        
+        {/* OVERSKRIFT & UNDERTEKST */}
+        <div>
+          <h1 className="text-navy text-2xl md:text-3xl font-bold mb-2 uppercase font-kbh">{t.titleUa}</h1>
+          <p className="text-navy/70 text-lg italic font-kbhtekst">({t.titleDk})</p>
+        </div>
+
+        {/* BOKS 1: DE FASTE SPORTSGRENE (VALG VIA DROPDOWNS) */}
+        <div className="bg-white p-6 border-2 border-gray-100 shadow-sm text-left space-y-4">
+          
+          {/* Vælg Hovedkategori */}
+          <div>
+            <label className="block text-navy font-bold text-sm uppercase font-kbh mb-1">
+              {language === "ua" ? t.chooseSportUa : t.chooseSportDk} <span className="text-gray-400">*</span>
+            </label>
+            <select 
+              value={selectedMainSport} 
+              onChange={(e) => { setSelectedMainSport(e.target.value); setSelectedSubSport(""); }}
+              className="w-full p-3 border-2 border-gray-200 bg-white text-navy font-kbhtekst"
+            >
+              <option value="">-- {language === "ua" ? "Оберіть" : "Vælg"} --</option>
+              {sportsDataExtended.map((sport, index) => (
+                <option key={index} value={language === "ua" ? sport.ukr : sport.dan}>
+                  {language === "ua" ? sport.ukr : sport.dan}
+                </option>
+              ))}
+            </select>
+          </div>
+
+           {/* Vælg Underkategori (Vises kun hvis hovedkategorien har underkategorier) */}   
+          {hasSubtypes && currentMainSportObj && (
+            <div className="bg-secondary-light/30 p-4 border border-purple-100">
+              <label className="block text-secondary-purple font-bold text-sm uppercase font-kbh mb-1">
+                {language === "ua" ? t.chooseSubUa : t.chooseSubDk} <span className="text-gray-400">*</span>
+              </label>
+              <select 
+                value={selectedSubSport} 
+                onChange={(e) => setSelectedSubSport(e.target.value)}
+                className="w-full p-3 border-2 border-gray-200 bg-white text-navy font-kbhtekst"
+              >
+                <option value="">-- {language === "ua" ? "Оберіть" : "Vælg"} --</option>
+                {currentMainSportObj.subtypes?.map((sub, index) => (
+                  <option key={index} value={language === "ua" ? sub.ukr : sub.dan}>
+                    {language === "ua" ? sub.ukr : sub.dan}
+                  </option>
+                ))}
+              </select>
+            </div>
+          )}
+
+          {/* Vælg Niveau */}
+          <div>
+            <label className="block text-navy font-bold text-sm uppercase font-kbh mb-1">
+              {language === "ua" ? t.chooseLevelUa : t.chooseLevelDk} <span className="text-gray-400">*</span>
+            </label>
+            <select 
+              value={selectedLevel} 
+              onChange={(e) => setSelectedLevel(e.target.value)}
+              className="w-full p-3 border-2 border-gray-200 bg-white text-navy font-kbhtekst"
+            >
+              <option value="">-- {language === "ua" ? "Оберіть" : "Vælg"} --</option>
+              {levelsData.map((level, index) => (
+                <option key={index} value={language === "ua" ? level.ukr : level.dan}>
+                  {language === "ua" ? level.ukr : level.dan}
+                </option>
+              ))}
+            </select>
+          </div>
+
+              
+            {/* Knappen "Tilføj" */}
+
+          <Button 
+            type="button"
+            variant="purple"
+            disabled={!selectedMainSport || !selectedLevel || (hasSubtypes && !selectedSubSport)}
+            onClick={addSportToList}
+            className="w-full h-11 rounded-sm flex items-center justify-center gap-2 cursor-pointer"
+          >
+            <Plus size={18} /> {language === "ua" ? t.addUa : t.addDk}
+          </Button>
+        </div>
+
+          {/* VISNING: LISTEN OVER TILFØJEDE SPORTSGRENE ("KURVEN") */}
+        {(Object.keys(chosenSports).length > 0 || customSportsList.length > 0) && (
+          <div className="bg-primary-blue/25 p-4 border-2 border-gray-200 text-left space-y-3">
+            <p className="text-navy font-bold text-xs uppercase font-kbh">{language === "ua" ? t.yourChoicesUa : t.yourChoicesDk}</p>
+            <div className="flex flex-wrap gap-2">
+
+              {/* Viser faste sportsgrene med tilhørende niveau */}
+              {Object.entries(chosenSports).map(([sport, level]) => (
+                <div key={sport} className="bg-secondary-light border border-gray-200 px-3 py-1 text-sm rounded-full text-navy flex items-center gap-2">
+                  <span className="font-bold uppercase text-xs font-kbh">{sport}</span>
+                  <span className="text-[11px] opacity-60 italic">({level})</span>
+                  <button type="button" onClick={() => removeSportFromList(sport)} className="hover:text-red-500 cursor-pointer">
+                    <X size={14} />
+                  </button>
+                </div>
+              ))}
+
+              {/* Viser "Andet"-indtastninger */}
+              {customSportsList.map((custom, index) => (
+                <div key={index} className="bg-secondary-light border border-dashed border-secondary-purple/40 px-3 py-1 text-sm rounded-full text-navy flex items-center gap-2">
+                  <span className="font-bold uppercase text-xs font-kbh">{language === "ua" ? "Інше:" : "Andet:"}</span> {custom}
+                  <button type="button" onClick={() => removeCustomSport(index)} className="hover:text-red-500 cursor-pointer">
+                    <X size={14} />
+                  </button>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* BOKS 2: FRITEKST-FELT (ANDEN SPORTSGREN) */}
+        <div className="bg-white p-6 border-2 border-gray-100 shadow-sm text-left space-y-3">
+          <label className="block text-navy font-bold text-sm uppercase font-kbh mb-1">
+            {language === "ua" ? t.otherUa : t.otherDk}
+          </label>
+          <div className="flex gap-2">
+            <input 
+              type="text"
+              value={customSportInput}
+              onChange={(e) => setCustomSportInput(e.target.value)}
+              className="flex-1 border-2 border-gray-200 text-navy font-kbhtekst"
+            />
+            <Button type="button" variant="purple" onClick={addCustomSport} className="rounded-sm h-13 px-4 cursor-pointer">
+              <Plus size={18} />
+            </Button>
+          </div>
+        </div>
+
+        {/* NAVIGATION: TILBAGE- OG NÆSTE-KNAPPER */}
+        <div className="flex items-center justify-between w-full mx-auto pt-4">
+          {/* Tilbage-knap */}
+          <button type="button" onClick={onBack} className="flex items-center gap-2 text-navy group hover:opacity-70 transition-all cursor-pointer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
+              <path d="M9 14l-4-4 4-4" /><path d="M5 10h11a4 4 0 1 1 0 8h-1" />
+            </svg>
+            <div className="text-left leading-tight">
+              <p className="font-kbh font-black uppercase text-base tracking-widest text-navy">{t.backUa}</p>
+              <p className="text-xs font-kbhtekst italic opacity-50 text-navy">({t.backDk})</p>
+            </div>
+          </button>
+
+        {/* Næste-knap (Nu med nøjagtig samme styling-effekt som i Step 4 når den er deaktiveret) */}
+          <Button 
+            variant="purple" 
+            size="kk" 
+            disabled={isInvalid}
+            onClick={handleNextSubmit} 
+            className={`h-14 w-38 md:w-50 px-10 shadow-xl flex flex-col items-center justify-center border-none cursor-pointer transition-all
+              ${isInvalid ? 'opacity-50 grayscale pointer-events-none' : ''}`}
+          >
+            <span className="text-[14px] md:text-[20px] font-bold tracking-wider font-kbh">{t.nextUa}</span>
+            <span className="text-[10px] font-normal opacity-80 font-kbhtekst italic lowercase">({t.nextDk})</span>
+          </Button>
+        </div>
+      </div>
+    </div>
+  );
+}

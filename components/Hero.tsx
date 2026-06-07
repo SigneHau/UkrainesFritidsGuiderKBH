@@ -1,0 +1,105 @@
+"use client"
+
+import React, { useState, useEffect } from "react"
+import Image from "next/image"
+import { Button } from "@/components/ui/button"
+import { useRouter } from "next/navigation"
+import { useLanguage } from "@/context/LanguageContext"
+
+export default function Hero() {
+  const router = useRouter()
+  const { language } = useLanguage()
+
+  // STYRER hvilket hero-billede der vises
+  const [currentImageIndex, setCurrentImageIndex] = useState(0)
+
+  // HERO BILLEDER (slideshow)
+  const heroImages = [
+    { src: "/image/hero-trampolin.jpg", alt: "Trampolin", className: "object-cover object-right md:object-right" },
+    { src: "/image/hero-faellesskab.jpg", alt: "Faellesskab", className: "object-cover object-center" },
+    { src: "/image/hero-sv.jpg", alt: "Svømme", className: "object-cover object-center" },
+    { src: "/image/cykel.jpg", alt: "Cykel", className: "object-cover object-right md:object-top" },
+    { src: "/image/hero-dans.jpg", alt: "Dans", className: "object-cover object-right md:object-center" },
+    { src: "/image/basket2.jpg", alt: "Basketball", className: "object-cover object-right md:object-center" }
+  ]
+
+  // AUTOMATISK SKIFT AF HERO BILLEDER
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentImageIndex((prev) =>
+        prev === heroImages.length - 1 ? 0 : prev + 1
+      )
+    }, 5000)
+
+    return () => clearInterval(timer)
+  }, [heroImages.length])
+
+  return (
+    <section className="relative w-full h-96 md:h-175 overflow-visible z-20">
+
+      {/* HERO BILLEDER (fade effekt) */}
+      {heroImages.map((image, index) => (
+        <div
+          key={index}
+          className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+            index === currentImageIndex ? "opacity-100 z-10" : "opacity-0 z-0"
+          }`}
+        >
+          <Image
+            src={image.src}
+            alt={image.alt}
+            fill
+            className={image.className}
+            priority={index === 0}
+          />
+        </div>
+      ))}
+
+      {/* CONTAINER TIL TEKSTBOKS */}
+      <div className="relative mx-auto max-w-7xl h-full w-full">
+
+        {/* BLÅ TEKSTBOKS */}
+        <div className="absolute -bottom-88 md:-bottom-64 left-0 z-30 w-full md:max-w-3xl bg-primary-blue p-6 md:p-10 shadow-1xl flex flex-col justify-start gap-3 md:gap-8 h-125 md:h-130">
+
+          <div>
+
+            {/* OVERSKRIFT */}
+            <h1 className="text-3xl md:text-5xl mb-2 font-kbh text-navy">
+              Допомога з пошуком дозвілля та спільноти в Копенгагені <br />
+              <span className="text-2xl md:text-3xl">
+                Få hjælp til fritidsaktiviteter og oplev fællesskabet
+              </span>
+            </h1>
+
+            {/* BRØDTEKST */}
+            <p className="text-base md:text-xl font-kbhtekst text-navy/70 min-h-[120px] md:min-h-0">
+
+              {/* UKRAINSK + DANSK TEKST (SKIFTER MED LANGUAGE CONTEXT) */}
+              {language === "ua"
+                ? "Копенгаген має багате дозвілля з 489 об’єднаннями та сильними спільнотами. FritidsGuiderne допомагають вам знайти позашкільну або вільну активність, яка вам підходить, і безпечно супроводжують вас у спільноту. Разом ми створюємо хороші враження та простір для доброго самопочуття і розвитку."
+                : "København har et rigt fritidsliv med 489 foreninger og stærke fællesskaber. FritidsGuiderne hjælper dig med at finde en fritidsaktivitet, der passer til dig, og guider dig trygt ind i fællesskabet. Sammen skaber vi gode oplevelser og plads til at trives."
+              }
+            </p>
+
+          </div>
+
+          {/* KNAP SEKTION */}
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between w-full mt-2">
+
+            {/* CTA KNAP */}
+            <Button 
+              variant="purple" 
+              size="xl" 
+              onClick={() => router.push('/registration')}
+              className="mx-auto md:ml-auto cursor-pointer"
+            >
+              {language === "ua" ? "Контакт" : "Kontakt"}
+            </Button>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+  )
+}

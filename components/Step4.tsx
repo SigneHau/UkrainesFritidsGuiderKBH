@@ -1,0 +1,234 @@
+"use client";
+
+import React, { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { useLanguage } from "@/context/LanguageContext";
+
+interface Step4Props {
+  onNext: (data: any) => void;
+  onBack: () => void;
+  initialData?: any;
+  userType: string; // "self" | "guardian" | "pro"
+}
+
+export default function Step4({ onNext, onBack, initialData, userType }: Step4Props) {
+  const { language } = useLanguage();
+  
+   // STATS: Her husker computeren adresse, telefon og e-mail, mens der tastes
+  const [address, setAddress] = useState(initialData?.address || { street: "", zipCode: "", city: "" });
+  const [phone, setPhone] = useState(initialData?.phone || "");
+  const [email, setEmail] = useState(initialData?.email || "");
+  
+  // STATS: Ekstra felter der kun bruges hvis brugeren er en Fagperson (Spor C)
+  const [institution, setInstitution] = useState(initialData?.institution || "");
+  const [proName, setProName] = useState(initialData?.proName || "");
+
+    // VALIDERING: Tjekker de basale felter samt adresseobjektets underpunkter
+  const baseInvalid = 
+    !address.street || 
+    !address.zipCode || 
+    !address.city || 
+    !phone || 
+    !email;
+
+    // Hvis det er en fagperson, skal de ekstra to felter også være udfyldt
+  const isInvalid = userType === "pro" 
+    ? (baseInvalid || !proName || !institution) 
+    : baseInvalid;
+
+      // FUNKTION: Pakker alle indtastede data sammen og sender dem videre til næste trin
+  const handleNext = () => {
+    if (isInvalid) return;
+    onNext({
+      address,
+      phone,
+      email,
+      ...(userType === "pro" && { institution, proName })
+    });
+  };
+
+  // Funktion til kun at tillade tal i telefonfeltet
+  const handlePhoneChange = (value: string) => {
+    const onlyNumbers = value.replace(/[^0-9]/g, '');
+    setPhone(onlyNumbers);
+  };
+
+  // Tekster til hjælpe-tekster (placeholders) i felterne baseret på sprog
+  const placeholders = {
+    street: language === "ua" ? "назва вулиці та nummer" : "Vejnavn og husnummer",
+    zip: language === "ua" ? "Поштовий індекс" : "Postnummer",
+    city: language === "ua" ? "Місто" : "By",
+    institution: language === "ua" ? "f.eks. Skole eller Klub" : "f.eks. Skole, Klub eller Institution"
+  };
+
+  return (
+    <div className="flex flex-col items-center animate-in fade-in slide-in-from-bottom-4 duration-500 w-full pb-20 text-center">
+      <div className="max-w-2xl w-full">
+        
+        {/* VISNING: Overskrifter (Skifter automatisk alt efter hvem der ansøger) */}
+        <div className="mb-8">
+          {userType === "self" && (
+            <>
+              <h1 className="text-navy text-3xl font-normal mb-2 uppercase font-kbh">Контактна інформація</h1>
+              <p className="text-navy/70 text-xl italic font-kbhtekst">(Din kontaktinformation)</p>
+            </>
+          )}
+          {userType === "guardian" && (
+            <>
+              <h1 className="text-navy text-3xl font-normal mb-2 uppercase font-kbh">Інформація про батьків / опікунів</h1>
+              <p className="text-navy/70 text-xl italic font-kbhtekst">(Forældre / Værge information)</p>
+            </>
+          )}
+          {userType === "pro" && (
+            <>
+              <h1 className="text-navy text-3xl font-normal mb-2 uppercase font-kbh">Інформація про професіонала</h1>
+              <p className="text-navy/70 text-xl italic font-kbhtekst">(Fagperson information)</p>
+            </>
+          )}
+        </div>
+
+          {/* INDRAMMET BOKS: Indfanger alle felter (Skarpe kanter med rounded-none) */}
+        <div className="bg-white p-6 border-2 border-gray-100 shadow-sm text-left space-y-6 max-w-md mx-auto mb-12 rounded-none">
+          
+          {/* Fagperson felter (Vises kun hvis userType er 'pro') */}
+          {userType === "pro" && (
+            <>
+              <div className="space-y-2">
+                <label className="block text-navy font-bold text-lg uppercase font-kbh">
+                  Ваше ім'я та посада: <span className="text-gray-400">*</span> <span className="text-navy/60 font-normal normal-case italic font-kbhtekst text-sm ml-1">(Dit navn & titel)</span>
+                </label>
+                <Input 
+                  type="text"
+                  value={proName}
+                  onChange={(e) => setProName(e.target.value)}
+                  className="h-12 md:h-14 border-2 border-gray-200 rounded-none bg-white text-base"
+                  required
+                />
+              </div>
+
+              <div className="space-y-2">
+                <label className="block text-navy font-bold text-lg uppercase font-kbh">
+                  Місце роботи / установа: <span className="text-gray-400">*</span> <span className="text-navy/60 font-normal normal-case italic font-kbhtekst text-sm ml-1">(Arbejdsplads / Institution)</span>
+                </label>
+                <Input 
+                  type="text"
+                  placeholder={placeholders.institution}
+                  value={institution}
+                  onChange={(e) => setInstitution(e.target.value)}
+                  className="h-12 md:h-14 border-2 border-gray-200 rounded-none bg-white text-base"
+                  required
+                />
+              </div>
+            </>
+          )}
+
+          {/* Adresse-felter */}
+          <div className="space-y-4">
+            <label className="block text-navy font-bold text-lg uppercase font-kbh">
+              {userType === "guardian" ? "Адреса батьків:" : "Адреса:"} <span className="text-gray-400">*</span>{" "}
+              <span className="text-navy/60 font-normal normal-case italic font-kbhtekst text-sm ml-1">
+                ({userType === "guardian" ? "Forældres adresse" : "Adresse"})
+              </span>
+            </label>
+            
+            <div className="space-y-1">
+              <Input 
+                placeholder={placeholders.street}
+                value={address.street}
+                onChange={(e) => setAddress({...address, street: e.target.value})}
+                className="h-12 md:h-14 border-2 border-gray-200 rounded-none bg-white text-base"
+                required
+              />
+            </div>
+
+            <div className="grid grid-cols-2 gap-4">
+              <div className="space-y-1">
+                <Input 
+                  placeholder={placeholders.zip}
+                  value={address.zipCode}
+                  onChange={(e) => setAddress({...address, zipCode: e.target.value})}
+                  className="h-12 md:h-14 border-2 border-gray-200 rounded-none bg-white text-base"
+                  required
+                />
+              </div>
+              <div className="space-y-1">
+                <Input 
+                  placeholder={placeholders.city}
+                  value={address.city}
+                  onChange={(e) => setAddress({...address, city: e.target.value})}
+                  className="h-12 md:h-14 border-2 border-gray-200 rounded-none bg-white text-base"
+                  required
+                />
+              </div>
+            </div>
+          </div>
+
+          <div className="space-y-2">
+            <label className="block text-navy text-lg font-bold uppercase font-kbh">
+              {userType === "guardian" ? "Телефон батьків:" : userType === "pro" ? "Робочий телефон:" : "Телефонний номер:"} <span className="text-gray-400">*</span>{" "}
+              <span className="text-navy/60 font-normal normal-case italic font-kbhtekst text-sm ml-1">
+                ({userType === "guardian" ? "Forældres tlf." : userType === "pro" ? "Arbejds tlf." : "Telefonnummer"})
+              </span>
+            </label>
+            <Input 
+              type="tel"
+              value={phone}
+              onChange={(e) => handlePhoneChange(e.target.value)}
+              className="h-12 md:h-14 border-2 border-gray-200 rounded-none bg-white text-lg"
+              required
+            />
+          </div>
+
+          {/* Email-felt */}
+          <div className="space-y-2">
+            <label className="block text-navy font-bold text-lg uppercase font-kbh">
+              {userType === "guardian" ? "Електронна пошта батьків:" : userType === "pro" ? "Робоча електронна пошта:" : "електронна адреса:"} <span className="text-gray-400">*</span>{" "}
+              <span className="text-navy/60 font-normal normal-case italic font-kbhtekst text-sm ml-1">
+                ({userType === "guardian" ? "Forældres e-mail" : userType === "pro" ? "Arbejds e-mail" : "E-mailadresse"})
+              </span>
+            </label>
+            <Input 
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="h-12 md:h-14 border-2 border-gray-200 rounded-none bg-white text-lg"
+              required
+            />
+          </div>
+        </div>
+
+          {/* VISNING: Navigationsknapper i bunden */}
+        <div className="flex items-center justify-between w-full max-w-md mx-auto px-2">
+          <button type="button" onClick={onBack} className="flex items-center gap-2 text-navy group hover:opacity-70 transition-all cursor-pointer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 md:w-6 md:h-6 text-navy">
+              <path d="M9 14l-4-4 4-4" /><path d="M5 10h11a4 4 0 1 1 0 8h-1" />
+            </svg>
+            <div className="text-left">
+              <p className="leading-tight font-kbh font-black uppercase text-[14px] md:text-base tracking-widest text-navy">Назад</p>
+              <p className="text-[10px] md:text-xs font-kbhtekst italic opacity-50 text-navy">(Tilbage)</p>
+            </div>
+          </button>
+
+            {/* SIKRET KNAP: Låser automatisk baseret på det opdaterede isInvalid-tjek */}
+
+          <Button 
+            variant="purple" 
+            size="kk" 
+            disabled={isInvalid}
+            onClick={handleNext}
+            className={`h-14 px-10 shadow-xl flex flex-col items-center justify-center border-none cursor-pointer transition-all
+              ${isInvalid ? 'opacity-50 grayscale pointer-events-none' : ''}`}
+          >
+            <span className="text-[18px] md:text-[20px] font-bold tracking-wider font-kbh">
+              Далі
+            </span>
+            <span className="text-[10px] font-normal opacity-80 font-kbhtekst italic lowercase">
+              (Næste)
+            </span>
+          </Button>
+        </div>
+      </div>
+    </div>
+  );
+}
