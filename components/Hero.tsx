@@ -90,7 +90,7 @@ export default function Hero() {
             <Button 
               variant="purple" 
               size="xl" 
-              onClick={() => router.push('/registration')}
+              onClick={() => router.push('/blank/registration')}
               className="mx-auto md:ml-auto cursor-pointer"
             >
               {language === "ua" ? "Контакт" : "Kontakt"}

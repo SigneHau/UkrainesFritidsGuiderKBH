@@ -64,7 +64,7 @@ export function ActivityDetailCard({ title, image, description }: ActivityDetail
         <Button 
           variant="purple" 
           size="md" 
-          onClick={() => router.push('/registration')}
+          onClick={() => router.push('/blank/registration')}
           className="w-full md:w-auto md:px-6 py-4 rounded-none font-kbh font-bold uppercase tracking-wide text-[11px] mt-auto cursor-pointer"
         >
           <div className="flex flex-col items-center justify-center leading-none">

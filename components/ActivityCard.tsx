@@ -43,7 +43,7 @@ export function ActivityCard({ title, image }: ActivityProps) {
         <Button 
           variant="purple" 
           size="md" 
-          onClick={() => router.push('/registration')}
+          onClick={() => router.push('blank/registration')}
           className="mx-auto mt-auto cursor-pointer"
         >
           {language === "ua" ? "Контакт" : "Kontakt"}
