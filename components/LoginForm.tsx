@@ -46,9 +46,9 @@ export default function LoginForm() {
         {/* Titel */}
         <div className="mb-5">
           <h1 className="text-4xl text-navy mb-10">Samarbejdsportal for ukrainske fritidsguider</h1>
-          <p className="text-sm text-nayv mt-1"> <p className="text-nayv text-base md:text-lg max-w-lg">
+           <p className="text-nayv text-base md:text-lg max-w-lg">
    Her finder du alle de materialer vi har udarbejdet og overleverer til Københavns Kommune — herunder designleverancer, SoMe prototype, og kampagnematerialer. Log ind for at tilgå og downloade materialerne.
-</p></p>
+        </p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">
