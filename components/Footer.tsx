@@ -87,6 +87,7 @@ export default function Footer() {
               </p>
               <nav className="flex flex-col gap-3">
                 {[
+                  { label: "Samarbejdsportal", href: "blank/login" },
                   { label: "Digital Post", href: "https://www.kk.dk/" },
                   { label: "Job", href: "https://www.kk.dk/" },
                   { label: "Om hjemmesiden", href: "https://www.kk.dk/" },
