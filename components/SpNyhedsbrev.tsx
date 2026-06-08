@@ -6,7 +6,7 @@ import { Download } from 'lucide-react'
 
 export default function SpNyhedsbrev() {
   return (
-    <section id="skabeloner" className="bg-white py-16 px-6">
+    <section id="skabeloner" className="bg-white py-6 px-6">
       <div className="max-w-7xl mx-auto space-y-12">
         
         {/* TOP BAR: TITEL & DOWNLOAD-KNAP */}
@@ -53,7 +53,7 @@ export default function SpNyhedsbrev() {
             </div>
           </div>
 
-          {/* HØJRE SIDE: MOBIL-VERSION & INVITATION (Fyldningsgrad: 4 ud af 12 kolonner) */}
+          {/* HØJRE SIDE: MOBIL-VERSION (Fyldningsgrad: 4 ud af 12 kolonner) */}
           <div className="md:col-span-4 flex flex-col space-y-16">
             
             {/* MOBIL-VERSION */}
@@ -75,23 +75,7 @@ export default function SpNyhedsbrev() {
               </div>
             </div>
 
-            {/* INVITATION (Ligger nu solidt i bunden og skaber balance) */}
-            <div className="flex flex-col group pt-4">
-              <div className="pl-4 mb-6 border-l-4 border-[#7C4BFF]">
-                <h3 className="text-lg font-bold text-[#000c2e]">Invitation</h3>
-                <p className="text-xs text-gray-400">Officiel skabelon til invitationer og events</p>
-              </div>
-              
-              <div className="w-full flex justify-center bg-white">
-                <Image
-                  src="/image/invitation.png" 
-                  alt="Officiel Invitation"
-                  width={360}
-                  height={500}
-                  className="w-full max-w-[320px] h-auto object-contain transition-transform duration-300 group-hover:scale-[1.01]"
-                />
-              </div>
-            </div>
+            
 
           </div>
 

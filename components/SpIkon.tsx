@@ -31,17 +31,27 @@ export default function SpIkon() {
           </a>
         </div>
 
-        {/* IKON-VISNING (Centreret på hvid baggrund for det sorte ikon) */}
-        <div className="flex justify-center items-center py-12">
-          <Image
-            src="/image/kompas.png" 
-            alt="De Ukrainske Fritidsguider Ikon"
-            width={240} 
-            height={240}
-            className="h-60 w-auto object-contain"
-            priority // Sikrer at Next.js indlæser billedet med det samme uden forsinkelse
-          />
-        </div>
+        {/* IKON-VISNING */}
+<div className="flex justify-center items-center gap-8 md:gap-48 py-8 flex-wrap">
+  
+  <Image
+    src="/image/kompas.png"
+    alt="De Ukrainske Fritidsguider Ikon"
+    width={240}
+    height={240}
+    className="w-[240px] h-auto object-contain"
+    priority
+  />
+
+  <Image
+    src="/image/compass-purple.png"
+    alt="De Ukrainske Fritidsguider Ikon i lilla"
+    width={240}
+    height={240}
+    className="w-[240px] h-auto object-contain"
+  />
+
+</div>
 
       </div>
     </section>

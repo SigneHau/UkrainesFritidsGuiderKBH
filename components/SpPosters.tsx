@@ -106,6 +106,25 @@ export default function SpPlakater() {
           </div>
         </div>
 
+
+        {/* INVITATION (Ligger nu solidt i bunden og skaber balance) */}
+            <div className="flex flex-col group pt-4">
+              <div className="pl-4 mb-6 ">
+                <h3 className="text-lg font-bold text-[#000c2e]">Invitation</h3>
+                <p className="text-xs text-gray-400">Officiel skabelon til invitationer og events</p>
+              </div>
+              
+              <div className="w-full flex justify-center bg-white">
+                <Image
+                  src="/image/invitation.png" 
+                  alt="Officiel Invitation"
+                  width={360}
+                  height={500}
+                  className="w-full max-w-[320px] h-auto object-contain transition-transform duration-300 group-hover:scale-[1.01]"
+                />
+              </div>
+            </div>
+
       </div>
     </section>
   )

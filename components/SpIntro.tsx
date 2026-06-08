@@ -10,7 +10,7 @@ export default function SpIntro() {
     { name: "Plakater", id: "plakater" },
     { name: "Ikon", id: "ikoner" },
     { name: "Flyvers & Roll-ups", id: "flyvers" },
-    { name: "Nyhedsbrev og invitation", id: "skabeloner" },
+    { name: "Nyhedsbrev", id: "skabeloner" },
     { name: "Merchandise", id: "merch" },
     { name: "Video", id: "video" },
     { name: "Instagram Prototype", id: "instagram" },
@@ -21,15 +21,15 @@ export default function SpIntro() {
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
 
         {/* BILLEDE - ØVERST PÅ MOBIL, TIL HØJRE PÅ DESKTOP */}
-        <div className="order-1 md:order-2 relative w-2/3 mx-auto md:w-full aspect-square overflow-hidden shadow-sm">
-          <Image
-            src="/image/kompas.png"
-            alt="De Ukrainske Fritidsguider - Samarbejde"
-            fill
-            className="object-contain"
-            priority
-          />
-        </div>
+<div className="order-1 md:order-2 relative w-2/3 md:w-[480px] mx-auto aspect-square overflow-hidden shadow-sm">
+  <Image
+    src="/image/kompas.png"
+    alt="De Ukrainske Fritidsguider - Samarbejde"
+    fill
+    className="object-contain"
+    priority
+  />
+</div>
 
         {/* INDHOLDSFORTEGNELSE */}
         <div className="order-2 md:order-1 space-y-4">

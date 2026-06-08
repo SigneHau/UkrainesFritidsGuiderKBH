@@ -44,7 +44,7 @@ export default function SpLogo() {
                 alt="Primært logo"
                 width={450}
                 height={250}
-                className="h-65 w-auto object-contain"
+                className="object-contain h-auto w-[260px]"
               />
             </div>
             <div className="p-4 bg-gray-50 border-t border-gray-100">
