@@ -138,6 +138,13 @@
   --sidebar-ring: oklch(0.556 0 0);
 }
 
+.chat-scroll {
+  scrollbar-width: none;
+}
+.chat-scroll::-webkit-scrollbar {
+  display: none;
+}
+
 @font-face {
   font-family: 'KBH';
   src: url('/fonts/KBH-Regular.otf') format('opentype');
