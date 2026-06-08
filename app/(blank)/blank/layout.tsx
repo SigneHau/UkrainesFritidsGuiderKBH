@@ -24,7 +24,7 @@ export default function RegistrationLayout({
                 alt="KK-Logo"
                 width={300}
                 height={180}
-                className="h-16 md:h-24 w-auto object-contain cursor-pointer"
+                className="h-16 md:h-20 w-auto object-contain cursor-pointer"
                 priority
               />
             </Link>

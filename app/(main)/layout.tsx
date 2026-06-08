@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import { LanguageProvider } from "../../context/LanguageContext";
+import ChatBot from "@/components/ChatBot";
 
 
 export const metadata: Metadata = {
@@ -29,6 +30,9 @@ export default function MainLayout({
         
         <Footer />
         </LanguageProvider>
+        <div className="fixed bottom-16 right-6 z-50">
+        <ChatBot />
+        </div>
       </body>
     </html>
   );
