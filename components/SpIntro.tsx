@@ -23,7 +23,7 @@ export default function SpIntro() {
         {/* BILLEDE - ØVERST PÅ MOBIL, TIL HØJRE PÅ DESKTOP */}
         <div className="order-1 md:order-2 relative w-2/3 mx-auto md:w-full aspect-square overflow-hidden shadow-sm">
           <Image
-            src="/image/kompas.svg"
+            src="/image/kompas.png"
             alt="De Ukrainske Fritidsguider - Samarbejde"
             fill
             className="object-contain"

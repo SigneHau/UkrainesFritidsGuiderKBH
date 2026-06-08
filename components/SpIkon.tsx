@@ -34,7 +34,7 @@ export default function SpIkon() {
         {/* IKON-VISNING (Centreret på hvid baggrund for det sorte ikon) */}
         <div className="flex justify-center items-center py-12">
           <Image
-            src="/image/kompas.svg" 
+            src="/image/kompas.png" 
             alt="De Ukrainske Fritidsguider Ikon"
             width={240} 
             height={240}
