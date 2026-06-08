@@ -2,7 +2,6 @@
 
 import React, { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import Link from "next/link"
 import { Eye, EyeOff, Lock, User, AlertCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -21,14 +20,14 @@ export default function LoginForm() {
     setError("")
 
     if (username === "ukrainskefritidsguider" && password === "kkUkraine") {
-      router.push('/samarbejdsportal')
+      router.push('/blank/samarbejdsportal')
     } else {
       setError("Forkert brugernavn eller adgangskode. Prøv igen.")
     }
   }
 
   return (
-    <div className="min-h-screen mt-20 flex justify-center bg-white px-4">
+    <div className="min-h-screen mt-10 flex justify-center bg-white px-4">
       <div className="w-full max-w-sm">
 
         {/* KK Logo */}
