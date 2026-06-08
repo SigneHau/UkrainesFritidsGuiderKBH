@@ -132,7 +132,7 @@ export default function Registration() {
             onClick={() => router.push('/blank/registration')}
             className="mx-auto cursor-pointer"
           >
-            {language === "ua" ? "Контакт" : "Kontakt"}
+            {language === "ua" ? "Отримати контакт" : "Bliv kontaktet"}
           </Button>
         </div>
 
