@@ -18,7 +18,7 @@ export default function SpIntro() {
   ]
 
   return (
-    <section className="bg-white py-12 md:py-20 px-6 font-kbhtekst" category="B2B">
+    <section className="bg-white py-12 md:py-20 px-6 font-kbhtekst">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-12 items-center">
         
         {/* INDHOLDSFORTEGNELSE */}

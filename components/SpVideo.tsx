@@ -18,7 +18,7 @@ export default function SpVideo() {
   ]
 
   return (
-    <section id="video" className="bg-white py-16 px-6" category="B2B">
+    <section id="video" className="bg-white py-16 px-6">
       <div className="max-w-7xl mx-auto space-y-10">
         
         <div className="pb-6 border-b border-gray-100">
