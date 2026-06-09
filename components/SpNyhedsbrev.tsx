@@ -20,7 +20,6 @@ export default function SpNyhedsbrev() {
             </p>
           </div>
 
-          {/* Fælles download-knap */}
           <a
             href="/download/nyhedsbrev_og_invitation.zip"
             download="De_Ukrainske_Fritidsguider_Materiale.zip"
@@ -34,14 +33,15 @@ export default function SpNyhedsbrev() {
         {/* LAYOUT GRID */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 pt-4 items-start">
           
-          {/* VENSTRE SIDE: WEB-VERSION (Fyldningsgrad: 8 ud af 12 kolonner) */}
+          {/* VENSTRE SIDE: WEB-VERSION */}
           <div className="md:col-span-8 flex flex-col group">
             <div className="pl-4 mb-6 border-l-4 border-[#7C4BFF]">
               <h3 className="text-lg font-bold text-[#000c2e]">Web-version</h3>
               <p className="text-xs text-gray-400">Layout til desktop og computer-skærme</p>
             </div>
             
-            <div className="w-full flex justify-center bg-white">
+            {/* Gjort endnu mindre: max-w-sm (ca 384px) */}
+            <div className="w-full max-w-sm mx-auto bg-white border border-gray-100 shadow-sm">
               <Image
                 src="/image/nyhedsbrev.png" 
                 alt="Nyhedsbrev - Web-version"
@@ -53,34 +53,26 @@ export default function SpNyhedsbrev() {
             </div>
           </div>
 
-          {/* HØJRE SIDE: MOBIL-VERSION (Fyldningsgrad: 4 ud af 12 kolonner) */}
-          <div className="md:col-span-4 flex flex-col space-y-16">
-            
-            {/* MOBIL-VERSION */}
-            <div className="flex flex-col group">
-              <div className="pl-4 mb-6 border-l-4 border-[#7C4BFF]">
-                <h3 className="text-lg font-bold text-[#000c2e]">Mobil-version</h3>
-                <p className="text-xs text-gray-400">Layout tilpasset smartphones</p>
-              </div>
-              
-              <div className="w-full flex justify-center bg-white">
-                <Image
-                  src="/image/nyhedsbrev-mobil.png" 
-                  alt="Nyhedsbrev - Mobil-version"
-                  width={360}
-                  height={1200}
-                  className="w-full max-w-[320px] h-auto object-contain transition-transform duration-300 group-hover:scale-[1.01]"
-                  priority
-                />
-              </div>
+          {/* HØJRE SIDE: MOBIL-VERSION */}
+          <div className="md:col-span-4 flex flex-col">
+            <div className="pl-4 mb-6 border-l-4 border-[#7C4BFF]">
+              <h3 className="text-lg font-bold text-[#000c2e]">Mobil-version</h3>
+              <p className="text-xs text-gray-400">Layout tilpasset smartphones</p>
             </div>
-
             
-
+            {/* Gjort endnu mindre: max-w-[180px] */}
+            <div className="w-full flex justify-center md:justify-start bg-white">
+              <Image
+                src="/image/nyhedsbrev-mobil.png" 
+                alt="Nyhedsbrev - Mobil-version"
+                width={360}
+                height={1200}
+                className="w-full max-w-[180px] h-auto object-contain transition-transform duration-300 group-hover:scale-[1.01]"
+                priority
+              />
+            </div>
           </div>
-
         </div>
-
       </div>
     </section>
   )
