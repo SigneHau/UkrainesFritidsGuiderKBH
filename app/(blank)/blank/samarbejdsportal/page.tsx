@@ -1,4 +1,6 @@
+
 import SpColors from "@/components/SpColors";
+import SpFlyerRollup from "@/components/SpFlyerRollup";
 import SpIkon from "@/components/SpIkon";
 import SpIntro from "@/components/SpIntro";
 import SpLogo from "@/components/SpLogo";
@@ -27,6 +29,8 @@ export default function PortalPage() {
             <SpIkon/>
 
             <SpNyhedsbrev/>
+
+           <SpFlyerRollup/>
             
             <SpMerch/>
 
