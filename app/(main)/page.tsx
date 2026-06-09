@@ -9,6 +9,7 @@ import SuccessStories from "@/components/SuccessStories";
 import LeisureGuides from "@/components/LeisureGuides";
 import Registration from "@/components/Registration";
 import dynamic from "next/dynamic";
+import KontingentStoetteSection from "@/components/KontingentStoetteSection";
 
 /**
  * =========================================================================
@@ -50,6 +51,8 @@ export default function Home() {
         <section className="w-full max-w-7xl mx-auto px-4 mt-86 md:mt-65"> 
           <ActivityManager />
         </section>
+        
+        <KontingentStoetteSection/>
 
         {/* Sektion med newsletter */}
         <section className="w-full md:mb-15"> 

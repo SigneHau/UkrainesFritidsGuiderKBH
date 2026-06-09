@@ -59,7 +59,7 @@ export default function Hero() {
       <div className="relative mx-auto max-w-7xl h-full w-full">
 
         {/* BLÅ TEKSTBOKS */}
-        <div className="absolute -bottom-88 md:-bottom-64 left-0 z-30 w-full md:max-w-3xl bg-primary-blue p-6 md:p-10 shadow-1xl flex flex-col justify-start gap-3 md:gap-8 h-125 md:h-130">
+        <div className="absolute -bottom-88 md:-bottom-64 left-0 z-30 w-full md:max-w-3xl bg-primary-blue p-6 md:p-10 shadow-1xl flex flex-col justify-start gap-3 md:gap-8 h-130 md:h-130">
 
           <div>
 
