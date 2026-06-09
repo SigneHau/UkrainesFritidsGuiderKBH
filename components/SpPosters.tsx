@@ -12,10 +12,17 @@ interface PlakatItem {
 export default function SpPlakater() {
   // De 4 grafiske plakater
   const grafiskePlakater: PlakatItem[] = [
-    { navn: 'Plakat 1', imgSrc: '/image/plakat1.png' },
-    { navn: 'Plakat 2', imgSrc: '/image/plakat2.png' },
-    { navn: 'Plakat 3', imgSrc: '/image/plakat3.png' },
-    { navn: 'Plakat 4', imgSrc: '/image/plakat4.png' },
+    // Ukrainske versioner
+  { navn: 'Футбол', imgSrc: '/image/plakat1.png' },
+  { navn: 'Бойові мистецтва', imgSrc: '/image/plakat2.png' },
+  { navn: 'Баскетбол', imgSrc: '/image/plakat3.png' },
+  { navn: 'Гімнастика', imgSrc: '/image/plakat4.png' },
+
+  // Danske versioner
+  { navn: 'Fodbold (DK)', imgSrc: '/image/plakat1-dk.png' },
+  { navn: 'Kampsport (DK)', imgSrc: '/image/plakat2-dk.png' },
+  { navn: 'Basket (DK)', imgSrc: '/image/plakat3-dk.png' },
+  { navn: 'Gymnastik (DK)', imgSrc: '/image/plakat4-dk.png' },
   ];
 
   // De 2 teksttunge informationsplakater

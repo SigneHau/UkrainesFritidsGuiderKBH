@@ -67,7 +67,7 @@ export default function SpLogo() {
               />
             </div>
             <div className="p-4 bg-gray-50 border-t border-gray-100">
-              <span className="font-semibold text-sm text-gray-700 block">Sekundær version (Hvid / Negativ)</span>
+              <span className="font-semibold text-sm text-gray-700 block">Sekundær version</span>
               <span className="text-xs text-gray-400">Bruges på mørke baggrunde, billeder eller merchandise</span>
             </div>
           </div>
