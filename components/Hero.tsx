@@ -76,8 +76,8 @@ export default function Hero() {
 
               {/* UKRAINSK + DANSK TEKST (SKIFTER MED LANGUAGE CONTEXT) */}
               {language === "ua"
-                ? "Копенгаген має багате дозвілля з 489 об’єднаннями та сильними спільнотами. FritidsGuiderne допомагають вам знайти позашкільну або вільну активність, яка вам підходить, і безпечно супроводжують вас у спільноту. Разом ми створюємо хороші враження та простір для доброго самопочуття і розвитку."
-                : "København har et rigt fritidsliv med 489 foreninger og stærke fællesskaber. FritidsGuiderne hjælper dig med at finde en fritidsaktivitet, der passer til dig, og guider dig trygt ind i fællesskabet. Sammen skaber vi gode oplevelser og plads til at trives."
+                ? "У Копенгагені є багате дозвілля з 489 клубами та спільнотами. FritidsGuiderne допомагають вам знайти заняття, яке вам підходить, і підтримують вас на шляху до нової спільноти. Ми також можемо допомогти вам подати заявку на фінансову підтримку для оплати членського внеску. Разом ми створюємо гарні враження та можливості для розвитку."
+                : "København har et rigt fritidsliv med 489 klubber og fællesskaber. FritidsGuiderne hjælper dig med at finde en aktivitet, der passer til dig, og støtter dig på vejen ind i et nyt fællesskab. Vi kan også hjælpe dig med at søge økonomisk støtte til at betale kontingent. Sammen skaber vi gode oplevelser og muligheder for udvikling."
               }
             </p>
 
