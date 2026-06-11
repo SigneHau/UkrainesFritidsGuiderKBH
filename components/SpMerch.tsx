@@ -64,9 +64,8 @@ export default function SpMerch() {
                 />
               </div>
 
-              {/* Kun den rene overskrift nedenunder */}
-              <span className={`text-sm tracking-wide text-[#000c2e] ${item.isHero ? 'font-bold text-base' : 'font-semibold'}`}>
-                {item.navn}
+              <span className={`text-sm tracking-wide text-[#000c2e] ${item.      isHero ? 'text-base' : 'font-normal'}`}>
+               {item.navn}
               </span>
               
             </div>

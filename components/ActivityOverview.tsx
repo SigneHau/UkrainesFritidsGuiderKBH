@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import { ActivityDetailCard } from "./ActivityDetailCard";
-import { Search, X, ArrowRight } from "lucide-react";
+import { Search, X, ArrowLeft } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useLanguage } from "@/context/LanguageContext";
 
@@ -160,7 +160,7 @@ export function ActivityOverview() {
           onClick={() => router.push('/')} 
           className="flex items-center gap-2 text-black text-lg font-bold hover:text-secondary-purple transition-all group cursor-pointer"
         >
-          <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+          <ArrowLeft className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           {language === "ua" ? "Назад" : "Tilbage"}
         </button>
       </div>
@@ -242,7 +242,7 @@ export function ActivityOverview() {
           onClick={() => router.push('/')} 
           className="flex items-center gap-2 text-black text-lg font-bold hover:text-secondary-purple transition-all group cursor-pointer"
         >
-          <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+          <ArrowLeft className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           {language === "ua" ? "Назад" : "Tilbage"}
         </button>
       </div>

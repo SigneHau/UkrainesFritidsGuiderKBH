@@ -18,12 +18,12 @@ export default function SpFlyerRollup() {
               Flyver & Roll-up
             </h2>
             <p className="text-gray-800 text-sm mt-1">
-              Kampagnematerialer til fysisk distribution og events. <br />
+              Kampagnematerialer til fysisk distribution og events.
               Inkluderer flyver og roll-up til De Ukrainske Fritidsguider.
             </p>
           </div>
 
-          {/* DOWNLOAD ZIP KNAP - Tilføjet <a> tag her */}
+          {/* DOWNLOAD ZIP KNAP */}
           <a
             href="/download/folder.zip"
             download="De_Ukrainske_Fritidsguider_Flyver_Rollup.zip"
@@ -37,46 +37,70 @@ export default function SpFlyerRollup() {
         {/* FLYVER & ROLL-UP VISNING */}
         <div className="flex justify-center items-start gap-8 md:gap-24 py-8 flex-wrap">
 
-          {/* Flyver */}
+          {/* Flyver UK */}
           <div className="flex flex-col items-center gap-4">
             <Image
-              src="/image/flyver.png"
+              src="/image/flyver-uk.png"
               alt="De Ukrainske Fritidsguider Flyver"
               width={240}
               height={340}
               className="w-[200px] md:w-[240px] h-auto object-contain shadow-md"
               priority
             />
-            <p className="text-sm text-gray-500 font-medium">Flyver</p>
-            {/* Tilføjet <a> tag her */}
+            <p className="text-sm text-gray-500 font-medium">Flyver ukrainsk</p>
+            
             <a
-              href="/download/folder-test(1).zip"
-              download="De_Ukrainske_Fritidsguider_Flyver.pdf"
+              href="/download/flyver-uk.png"
+              download="De_Ukrainske_Fritidsguider_Flyver_UK.png"
               className="flex items-center gap-2 text-xs text-[#7C4BFF] hover:underline"
             >
               <Download size={14} />
-              Download PDF
+              Download
             </a>
           </div>
 
+
+          {/* Flyver DK */}
+          <div className="flex flex-col items-center gap-4">
+            <Image
+              src="/image/flyver-dk.png"
+              alt="De Ukrainske Fritidsguider Flyver"
+              width={240}
+              height={340}
+              className="w-[200px] md:w-[240px] h-auto object-contain shadow-md"
+              priority
+            />
+            <p className="text-sm text-gray-500 font-medium">Flyver dansk</p>
+
+            <a
+              href="/download/flyver-dk.png"
+              download="De_Ukrainske_Fritidsguider_Flyver_DK.png"
+              className="flex items-center gap-2 text-xs text-[#7C4BFF] hover:underline"
+            >
+              <Download size={14} />
+              Download
+            </a>
+          </div>
+
+          
           {/* Roll-up */}
           <div className="flex flex-col items-center gap-4">
             <Image
-              src="/image/rollup.png"
+              src="/image/roolups.png"
               alt="De Ukrainske Fritidsguider Roll-up"
               width={160}
               height={400}
               className="w-[140px] md:w-[160px] h-auto object-contain shadow-md"
             />
             <p className="text-sm text-gray-500 font-medium">Roll-up</p>
-            {/* Tilføjet <a> tag her */}
+
             <a
-              href="/download/rollup-dansk(1).png"
-              download="De_Ukrainske_Fritidsguider_Rollup.pdf"
+              href="/download/roolups.png"
+              download="De_Ukrainske_Fritidsguider_Rollup.png"
               className="flex items-center gap-2 text-xs text-[#7C4BFF] hover:underline"
             >
               <Download size={14} />
-              Download PDF
+              Download
             </a>
           </div>
 

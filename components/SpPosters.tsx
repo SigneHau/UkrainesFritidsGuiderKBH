@@ -77,7 +77,7 @@ export default function SpPlakater() {
                     className="max-h-full w-auto object-contain transition-transform duration-300 group-hover:scale-102"
                   />
                 </div>
-                <span className="font-semibold text-sm text-[#000c2e] tracking-wide">
+                <span className=" text-sm text-[#000c2e] tracking-wide">
                   {plakat.navn}
                 </span>
               </div>
@@ -105,7 +105,7 @@ export default function SpPlakater() {
                     priority
                   />
                 </div>
-                <span className="font-semibold text-sm text-[#000c2e] tracking-wide">
+                <span className="text-sm text-[#000c2e] tracking-wide">
                   {plakat.navn}
                 </span>
               </div>

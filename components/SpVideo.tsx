@@ -1,20 +1,30 @@
 "use client"
 
-import React from "react"
+import React, { useState } from "react"
 import Image from "next/image"
-import { Download, ExternalLink } from "lucide-react"
+import { Download, ExternalLink, Play } from "lucide-react"
 
 export default function SpVideo() {
+  const [playingIndex, setPlayingIndex] = useState<number | null>(null)
+
   const videoer = [
     { 
       name: "Animationsvideo", 
       file: "ukr-animatedvideo.mp4",
-      cover: "/image/uk-videocover.png",
+      cover: "/image/ukr-animatedvideo-Cover.jpg",
       isExternal: true,
-      link: "https://drive.google.com/drive/u/0/folders/1DEnHiw2f9W_YYPYxQrUWGbLh_H9DULsl?ths=true" 
+      link: "https://www.youtube.com"
     },
-    { name: "Vera Introduktion", file: "vera-introduktionsvideo.mp4" },
-    { name: "Ukrainsk video", file: "ukr-vid.mp4" },
+    { 
+      name: "Ukrainsk video", 
+      file: "ukr-vid.mp4",
+      cover: "/image/lpvideo-ukr-Cover.jpg"
+    },
+    { 
+      name: "Vera Introduktion", 
+      file: "vera-introduktionsvideo.mp4",
+      cover: "/image/vera-lancering2.png"
+    },
   ]
 
   return (
@@ -31,15 +41,20 @@ export default function SpVideo() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 py-8">
-          {videoer.map((video) => (
+          {videoer.map((video, index) => (
             <div key={video.file} className="flex flex-col gap-4">
               
-              {/* Videoviser eller Coverbillede */}
-              <div className="w-full aspect-video bg-gray-100 rounded-lg overflow-hidden border border-gray-200 relative group">
+              <div className="w-full aspect-video bg-gray-100 overflow-hidden border border-gray-200 relative group">
+                
                 {video.isExternal ? (
-                  <a href={video.link} target="_blank" rel="noopener noreferrer" className="block w-full h-full">
+                  <a 
+                    href={video.link} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="block w-full h-full"
+                  >
                     <Image 
-                      src={video.cover!} 
+                      src={video.cover} 
                       alt={video.name}
                       fill
                       className="object-cover group-hover:scale-105 transition-transform duration-300"
@@ -48,16 +63,39 @@ export default function SpVideo() {
                       <ExternalLink className="text-white w-10 h-10" />
                     </div>
                   </a>
-                ) : (
-                  <video controls className="w-full h-full object-cover">
+                ) : playingIndex === index ? (
+                  <video controls autoPlay className="w-full h-full object-contain bg-black">
                     <source src={`/video/${video.file}`} type="video/mp4" />
                     Din browser understøtter ikke video-tagget.
                   </video>
+                ) : (
+                  <div
+                    onClick={() => setPlayingIndex(index)}
+                    className="w-full h-full cursor-pointer relative"
+                  >
+                    <Image 
+                      src={video.cover} 
+                      alt={video.name}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+
+                   {/* PLAY KNAP OVERLAY */}
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="bg-gray-300/90 rounded-full p-6 flex items-center justify-center">
+                     <Play className="w-12 h-12 text-white" strokeWidth={2} />
+                  </div>
+                </div>
+
+                  </div>
                 )}
               </div>
 
               <div className="flex flex-col gap-1">
-                <p className="text-sm font-semibold text-[#000c2e]">{video.name}</p>
+                <p className="text-sm text-[#000c2e]">
+                  {video.name}
+                </p>
+
                 <a
                   href={video.isExternal ? video.link : `/video/${video.file}`}
                   download={!video.isExternal}
@@ -65,7 +103,7 @@ export default function SpVideo() {
                   className="flex items-center gap-2 text-sm text-[#7C4BFF] hover:underline w-fit"
                 >
                   <Download size={16} />
-                  {video.isExternal ? "Åbn på Google Drev" : "Download video"}
+                  {video.isExternal ? "Se video på YouTube" : "Download video"}
                 </a>
               </div>
             </div>

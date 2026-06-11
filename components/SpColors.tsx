@@ -12,10 +12,10 @@ export default function FarveCirklerKK(): React.JSX.Element {
   const farver: Farve[] = [
     { navn: 'Navy', hex: '#000c2e', bgClass: 'bg-[#000c2e]', textClass: 'text-white' },
     { navn: 'Offwhite', hex: '#F5F3E8', bgClass: 'bg-[#F5F3E8]', textClass: 'text-[#000c2e]' },
-    { navn: 'Grey KK', hex: '#fafafb', bgClass: 'bg-[#fafafb]', textClass: 'text-[#000c2e]', borderClass: 'border-gray-200' },
-    { navn: 'Primary Blue', hex: '#BEE2FE', bgClass: 'bg-[#BEE2FE]', textClass: 'text-[#000c2e]' },
-    { navn: 'Secondary Purple', hex: '#7C4BFF', bgClass: 'bg-[#7C4BFF]', textClass: 'text-white' },
-    { navn: 'Secondary Light', hex: '#D8C9FF', bgClass: 'bg-[#D8C9FF]', textClass: 'text-[#000c2e]' },
+    { navn: 'Grey', hex: '#fafafb', bgClass: 'bg-[#fafafb]', textClass: 'text-[#000c2e]', borderClass: 'border-gray-200' },
+    { navn: 'Blue', hex: '#BEE2FE', bgClass: 'bg-[#BEE2FE]', textClass: 'text-[#000c2e]' },
+    { navn: 'Purple', hex: '#7C4BFF', bgClass: 'bg-[#7C4BFF]', textClass: 'text-white' },
+    { navn: 'Light', hex: '#D8C9FF', bgClass: 'bg-[#D8C9FF]', textClass: 'text-[#000c2e]' },
   ];
 
   return (
@@ -35,7 +35,7 @@ export default function FarveCirklerKK(): React.JSX.Element {
               <div 
                 className={`w-24 h-24 rounded-full ${farve.bgClass} ${farve.borderClass ? `border ${farve.borderClass}` : 'border border-gray-100'} flex items-center justify-center shadow-sm transition-transform hover:scale-105 duration-200`}
               >
-                <span className={`${farve.textClass} text-xs font-semibold text-center px-2 break-words`}>
+                <span className={`${farve.textClass} text-xs text-center px-2 break-words`}>
                   {farve.navn}
                 </span>
               </div>
