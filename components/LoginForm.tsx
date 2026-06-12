@@ -1,7 +1,7 @@
 "use client"
 
-import React, { useState } from 'react'
-import { useRouter } from 'next/navigation'
+import React, { useState } from "react"
+import { useRouter } from "next/navigation"
 import { Eye, EyeOff, Lock, User, AlertCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -19,16 +19,18 @@ export default function LoginForm() {
     e.preventDefault()
     setError("")
 
-    if (username === "ukrainskefritidsguider" && password === "kkUkraine") {
-      router.push('/blank/samarbejdsportal')
+    if (username === "fritidsguider" && password === "København") {
+      router.push("/blank/samarbejdsportal")
     } else {
       setError("Forkert brugernavn eller adgangskode. Prøv igen.")
     }
   }
 
   return (
-    <div className="min-h-screen mt-10 flex justify-center bg-white px-4">
-      <div className="w-full max-w-sm">
+    <div className="min-h-screen flex items-center justify-center bg-white px-4 py-10 -mt-30">
+
+      {/* CARD */}
+      <div className="w-full max-w-lg border border-gray-200 shadow-sm bg-white p-8 md:p-12">
 
         {/* KK Logo */}
         <div className="mb-6 flex items-center justify-center">
@@ -43,14 +45,18 @@ export default function LoginForm() {
         </div>
 
         {/* Titel */}
-        <div className="mb-5">
-          <h1 className="text-4xl text-navy mb-10">Samarbejdsportal for ukrainske fritidsguider</h1>
-           <p className="text-nayv text-base md:text-lg max-w-lg">
-   Her finder du alle de materialer vi har udarbejdet og overleverer til Københavns Kommune — herunder designleverancer, SoMe prototype, og kampagnematerialer. Log ind for at tilgå og downloade materialerne.
-        </p>
+        <div className="mb-8 text-start">
+          <h1 className="text-3xl md:text-4xl text-navy mb-4 leading-tight">
+            Samarbejdsportal for ukrainske fritidsguider
+          </h1>
+
+          <p className="text-navy text-base md:text-lg opacity-80 leading-relaxed">
+            Her finder du alle de materialer vi har udarbejdet og overleveret til Københavns Kommune —
+            herunder designleverancer, SoMe prototype og kampagnematerialer. Log ind for at tilgå og downloade materialerne.
+          </p>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-5">
 
           {/* Fejlbesked */}
           {error && (
@@ -65,8 +71,9 @@ export default function LoginForm() {
             <Label htmlFor="username" className="text-sm font-medium text-navy">
               Brugernavn
             </Label>
+
             <div className="relative">
-              <User className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-nayv" />
+              <User className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-navy" />
               <Input
                 id="username"
                 type="text"
@@ -81,14 +88,12 @@ export default function LoginForm() {
 
           {/* Adgangskode */}
           <div className="space-y-1">
-            <div className="flex items-center justify-between">
-              <Label htmlFor="password" className="text-sm font-medium text-navy">
-                Adgangskode
-              </Label>
-              
-            </div>
+            <Label htmlFor="password" className="text-sm font-medium text-navy">
+              Adgangskode
+            </Label>
+
             <div className="relative">
-              <Lock className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-nayv" />
+              <Lock className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-navy" />
               <Input
                 id="password"
                 type={showPassword ? "text" : "password"}
@@ -98,7 +103,7 @@ export default function LoginForm() {
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
-              {/* Knap til at vise/skjule adgangskode */}
+
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
@@ -112,7 +117,7 @@ export default function LoginForm() {
 
           {/* Log ind knap */}
           <Button
-            variant="purple" 
+            variant="purple"
             type="submit"
             className="w-full rounded-none"
           >
