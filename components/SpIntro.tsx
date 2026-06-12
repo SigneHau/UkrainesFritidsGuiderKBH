@@ -18,12 +18,14 @@ export default function SpIntro() {
   ]
 
   return (
-    <section className="bg-white py-12 md:py-20 px-6 font-kbhtekst">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-12 items-center">
-        
-        {/* INDHOLDSFORTEGNELSE */}
+    <section className="bg-white px-6 font-kbhtekst ">
+
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-stretch gap-10">
+
+        {/* VENSTRE KOLONNE */}
         <div className="order-2 md:order-1 flex-1 w-full space-y-4">
-          <h1 className="text-2xl font-semibold tracking-wider text-navy">
+
+          <h1 className="text-2xl font-semibold tracking-wider text-navy mb-6">
             Materiale oversigt
           </h1>
 
@@ -32,31 +34,34 @@ export default function SpIntro() {
               <a
                 key={link.id}
                 href={`#${link.id}`}
-                className="group flex items-center justify-between p-3 border border-sky-100 bg-sky-50/50 hover:bg-[#D8C9FF] hover:border-[#D8C9FF] transition-all duration-200"
+                className="group flex items-center justify-between p-3 border border-sky-100 bg-sky-50/50 hover:bg-[#D8C9FF] hover:border-[#D8C9FF] transition"
               >
-                <span className="font-medium text-navy group-hover:text-navy transition-colors duration-200">
+                <span className="font-medium text-navy">
                   {link.name}
                 </span>
 
-                <span className="text-navy group-hover:text-navy group-hover:translate-x-1 transition-all duration-200 text-sm">
+                <span className="text-sm group-hover:translate-x-1 transition">
                   →
                 </span>
               </a>
             ))}
           </nav>
+
         </div>
 
-        {/* BILLEDE - Justeret med mt-10 for at skubbe det ned og centrere det */}
-        <div className="order-1 md:order-2 flex-1 flex justify-center mt-15">
-          <div className="relative w-full max-w-[480px] aspect-square overflow-hidden">
+        {/* HØJRE KOLONNE (KOMPAS CENTRERET) */}
+        <div className="order-1 md:order-2 flex-1 flex items-center justify-center">
+
+          <div className="w-2/3 md:w-full max-w-[420px] aspect-square flex items-center justify-center md:mt-8">
             <Image
               src="/image/kompas.png"
-              alt="De Ukrainske Fritidsguider - Samarbejde"
-              fill
+              alt="kompas"
+              width={480}
+              height={480}
               className="object-contain"
-              priority
             />
           </div>
+
         </div>
 
       </div>

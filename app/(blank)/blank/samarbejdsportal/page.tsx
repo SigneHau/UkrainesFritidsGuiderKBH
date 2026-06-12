@@ -1,7 +1,8 @@
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 import SpAnimeredeFigurer from "@/components/SpAnimeredeFigurer";
 import SpColors from "@/components/SpColors";
-
 import SpFlyerRollup from "@/components/SpFlyerRollup";
 import SpIkon from "@/components/SpIkon";
 import SpInstagram from "@/components/SpInstagram";
@@ -12,35 +13,41 @@ import SpNyhedsbrev from "@/components/SpNyhedsbrev";
 import SpPosters from "@/components/SpPosters";
 import SpVideo from "@/components/SpVideo";
 
-
 export default function PortalPage() {
+  return (
+    <div className="max-w-7xl mx-auto px-6">
 
-    return(
-       
-        <div>
-            <SpIntro/>
+      {/* LOG UD (til forsiden) */}
+      <div className="flex justify-end mr-6 -mt-20 mb-20">
+    <Link href="/">
+      <Button variant="purple">
+        Log ud
+      </Button>
+    </Link>
+  </div>
 
-            <SpLogo/>
+      <SpIntro />
 
-            <SpColors/>
-            
-            <SpPosters/>
+      <SpLogo />
 
-            <SpIkon/>
+      <SpColors />
 
-            <SpFlyerRollup/>
-            
-            <SpNyhedsbrev/>
+      <SpPosters />
 
-            <SpMerch/>
+      <SpIkon />
 
-            <SpAnimeredeFigurer/>
+      <SpFlyerRollup />
 
-            <SpVideo/>
+      <SpNyhedsbrev />
 
-            <SpInstagram/>
+      <SpMerch />
 
-            
-        </div>
-    );
+      <SpAnimeredeFigurer />
+
+      <SpVideo />
+
+      <SpInstagram />
+
+    </div>
+  );
 }
