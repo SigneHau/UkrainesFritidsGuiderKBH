@@ -17,7 +17,7 @@ export default function SpFlyerRollup() {
             <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-[#000c2e]">
               Flyver & Roll-up
             </h2>
-            <p className="text-gray-800 text-sm mt-1">
+            <p className="text-black text-sm mt-1">
               Kampagnematerialer til fysisk distribution og events.
               Inkluderer flyver og roll-up til De Ukrainske Fritidsguider.
             </p>
@@ -37,29 +37,6 @@ export default function SpFlyerRollup() {
         {/* FLYVER & ROLL-UP VISNING */}
         <div className="flex justify-center items-start gap-8 md:gap-24 py-8 flex-wrap">
 
-          {/* Flyver UK */}
-          <div className="flex flex-col items-center gap-4">
-            <Image
-              src="/image/flyver-uk.png"
-              alt="De Ukrainske Fritidsguider Flyver"
-              width={240}
-              height={340}
-              className="w-[200px] md:w-[240px] h-auto object-contain shadow-md"
-              priority
-            />
-            <p className="text-sm text-gray-500 font-medium">Flyver ukrainsk</p>
-            
-            <a
-              href="/download/flyver-uk.png"
-              download="De_Ukrainske_Fritidsguider_Flyver_UK.png"
-              className="flex items-center gap-2 text-xs text-[#7C4BFF] hover:underline"
-            >
-              <Download size={14} />
-              Download
-            </a>
-          </div>
-
-
           {/* Flyver DK */}
           <div className="flex flex-col items-center gap-4">
             <Image
@@ -75,6 +52,28 @@ export default function SpFlyerRollup() {
             <a
               href="/download/flyver-dk.png"
               download="De_Ukrainske_Fritidsguider_Flyver_DK.png"
+              className="flex items-center gap-2 text-xs text-[#7C4BFF] hover:underline"
+            >
+              <Download size={14} />
+              Download
+            </a>
+          </div>
+
+          {/* Flyver UK */}
+          <div className="flex flex-col items-center gap-4">
+            <Image
+              src="/image/flyver-uk.png"
+              alt="De Ukrainske Fritidsguider Flyver"
+              width={240}
+              height={340}
+              className="w-[200px] md:w-[240px] h-auto object-contain shadow-md"
+              priority
+            />
+            <p className="text-sm text-gray-500 font-medium">Flyver ukrainsk</p>
+            
+            <a
+              href="/download/flyver-uk.png"
+              download="De_Ukrainske_Fritidsguider_Flyver_UK.png"
               className="flex items-center gap-2 text-xs text-[#7C4BFF] hover:underline"
             >
               <Download size={14} />
