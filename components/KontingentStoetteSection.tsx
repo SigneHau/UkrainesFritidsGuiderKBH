@@ -50,7 +50,7 @@ export default function KontingentStoetteSection() {
               Фінансова підтримка для дозвілля
               <br />
               <span className="text-2xl font-normal block mt-1">
-                Kontingent støtte til fritidsaktiviteter
+                Kontingentstøtte til fritidsaktiviteter
               </span>
             </h2>
 
