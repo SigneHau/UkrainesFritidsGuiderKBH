@@ -13,10 +13,10 @@ export default function SpVideo() {
       file: "ukr-animatedvideo.mp4",
       cover: "/image/ukr-animatedvideo-Cover.jpg",
       isExternal: true,
-      link: "https://www.youtube.com"
+      link: "https://www.youtube.com/watch?v=uGIoVd1YOxw"
     },
     { 
-      name: "Ukrainsk video", 
+      name: "Landingpage", 
       file: "ukr-vid.mp4",
       cover: "/image/lpvideo-ukr-Cover.jpg"
     },

@@ -66,7 +66,7 @@ export default function SpPlakater() {
           </div>
 
           <a
-            href="/download/plakater_alle.zip"
+            href="/download/plakater.zip"
             download
             className="flex items-center gap-2 px-5 py-3 font-medium text-white bg-[#7C4BFF] hover:bg-[#D8C9FF] hover:text-[#000c2e] transition"
           >
