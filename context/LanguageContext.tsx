@@ -16,7 +16,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const [language, setLanguageState] = useState<Language>("ua")
 
   // Henter sproget fra localStorage, hvis det findes. 
-  // Ingen synkron setState herinde = intet hop og ingen hydration fejl!
+ 
   useEffect(() => {
     const savedLanguage = localStorage.getItem("app-language") as Language
     if (savedLanguage === "ua" || savedLanguage === "dk") {

@@ -16,7 +16,7 @@ export default function LanguageToggle() {
             : "opacity-50 hover:opacity-100"
         }`}
       >
-        UK
+        UKR
       </button>
       
       {/* Skillelinje */}
@@ -31,7 +31,7 @@ export default function LanguageToggle() {
             : "opacity-50 hover:opacity-100"
         }`}
       >
-        DK
+        DNK
       </button>
     </div>
   )
