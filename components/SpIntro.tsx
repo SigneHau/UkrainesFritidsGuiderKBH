@@ -9,7 +9,7 @@ export default function SpIntro() {
     { name: "Farver", id: "color" },
     { name: "Plakater", id: "plakater" },
     { name: "Ikon", id: "ikoner" },
-    { name: "Flyvers & Roll-ups", id: "flyver-rollup" },
+    { name: "Flyer & Roll-ups", id: "flyer-rollup" },
     { name: "Nyhedsbrev", id: "skabeloner" },
     { name: "Merchandise", id: "merch" },
     { name: "Animerede figurer", id: "figurer" },

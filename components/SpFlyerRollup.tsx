@@ -8,18 +8,18 @@ import { Download } from 'lucide-react'
 
 export default function SpFlyerRollup() {
   return (
-    <section id="flyver-rollup" className="bg-white py-16 px-6">
+    <section id="flyer-rollup" className="bg-white py-16 px-6">
       <div className="max-w-7xl mx-auto space-y-10">
 
         {/* TITEL & DOWNLOAD-KNAP */}
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 pb-6 border-b border-gray-100">
           <div>
             <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-[#000c2e]">
-              Flyver & Roll-up
+              Flyer & Roll-up
             </h2>
             <p className="text-black text-sm mt-1">
               Kampagnematerialer til fysisk distribution og events.
-              Inkluderer flyver og roll-up til De Ukrainske Fritidsguider.
+              Inkluderer flyer og roll-up til De Ukrainske Fritidsguider.
             </p>
           </div>
 
@@ -34,10 +34,10 @@ export default function SpFlyerRollup() {
           </a>
         </div>
 
-        {/* FLYVER & ROLL-UP VISNING */}
+        {/* FLYER & ROLL-UP VISNING */}
         <div className="flex justify-center items-start gap-8 md:gap-24 py-8 flex-wrap">
 
-          {/* Flyver DK */}
+          {/* Flyer DK */}
           <div className="flex flex-col items-center gap-4">
             <Image
               src="/image/flyver-dk.png"
@@ -47,7 +47,7 @@ export default function SpFlyerRollup() {
               className="w-[200px] md:w-[240px] h-auto object-contain shadow-md"
               priority
             />
-            <p className="text-sm text-gray-500 font-medium">Flyver dansk</p>
+            <p className="text-sm text-gray-500 font-medium">Flyer dansk</p>
 
             <a
               href="/download/flyver-dk.png"
@@ -59,7 +59,7 @@ export default function SpFlyerRollup() {
             </a>
           </div>
 
-          {/* Flyver UK */}
+          {/* Flyer UK */}
           <div className="flex flex-col items-center gap-4">
             <Image
               src="/image/flyver-uk.png"
@@ -69,7 +69,7 @@ export default function SpFlyerRollup() {
               className="w-[200px] md:w-[240px] h-auto object-contain shadow-md"
               priority
             />
-            <p className="text-sm text-gray-500 font-medium">Flyver ukrainsk</p>
+            <p className="text-sm text-gray-500 font-medium">Flyer ukrainsk</p>
             
             <a
               href="/download/flyver-uk.png"
