@@ -21,7 +21,7 @@ export default function FritidsguiderSection() {
 
             {/* MOBIL OVERSKRIFT */}
             <h2 className="block md:hidden text-navy text-2xl font-kbh leading-tight text-left w-full mb-6">
-              Fritidsguiderне допоможуть вам
+              Fritidsguiderne допоможуть вам
               <br />
               <span className="text-xl font-normal block mt-1">
                 Fritidsguiderne er klar til at hjælpe jer

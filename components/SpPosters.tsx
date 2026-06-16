@@ -13,21 +13,21 @@ export default function SpPlakater() {
 
   const grafiskePlakater: PlakatItem[] = [
 
-    { navn: 'Fodbold (DK)', imgSrc: '/image/plakat1-dk.png' },
-    { navn: 'Kampsport (DK)', imgSrc: '/image/plakat2-dk.png' },
-    { navn: 'Basket (DK)', imgSrc: '/image/plakat3-dk.png' },
-    { navn: 'Gymnastik (DK)', imgSrc: '/image/plakat4-dk.png' },
+    { navn: 'Fodbold (DK)', imgSrc: '/image/plakat1dk.png' },
+    { navn: 'Kampsport (DK)', imgSrc: '/image/plakat2dk.png' },
+    { navn: 'Basket (DK)', imgSrc: '/image/plakat3dk.png' },
+    { navn: 'Gymnastik (DK)', imgSrc: '/image/plakat4dk.png' },
 
-    { navn: 'Футбол', imgSrc: '/image/plakat1.png' },
-    { navn: 'Бойові мистецтва', imgSrc: '/image/plakat2.png' },
-    { navn: 'Баскетбол', imgSrc: '/image/plakat3.png' },
-    { navn: 'Гімнастика', imgSrc: '/image/plakat4.png' },
+    { navn: 'Футбол', imgSrc: '/image/plakat1uk.png' },
+    { navn: 'Бойові мистецтва', imgSrc: '/image/plakat2uk.png' },
+    { navn: 'Баскетбол', imgSrc: '/image/plakat3uk.png' },
+    { navn: 'Гімнастика', imgSrc: '/image/plakat4uk.png' },
 
   ]
 
   const infoPlakater: PlakatItem[] = [
-    { navn: 'Dansk udgave', imgSrc: '/image/plakat7-info-dk.png' },
-    { navn: 'Ukrainsk udgave', imgSrc: '/image/plakat6-info.png' },
+    { navn: 'Dansk udgave', imgSrc: '/image/plakat6info-dk.png' },
+    { navn: 'Ukrainsk udgave', imgSrc: '/image/plakat6info-uk.png' },
     
   ]
 
