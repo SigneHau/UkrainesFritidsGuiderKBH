@@ -360,3 +360,26 @@ export default function Step6({ onBack, onEdit, onSubmit, formData }: Step6Props
     </div>
   );
 }
+
+
+/*
+  KOMMENTAR:
+  Step6 er det sidste trin i formularflowet, hvor brugeren får et samlet overblik over alle indtastede oplysninger fra de tidligere steps.
+  Her vises en opsummering af ansøger-type, personlige oplysninger, kontaktinformation, adresse samt valgte sportsgrene og niveauer.
+
+  Brugeren kan redigere hvert enkelt afsnit via et blyant-ikon, som sender dem tilbage til det relevante step i formularen.
+
+  Der er to samtykkefelter:
+  - Ét til godkendelse af databehandling
+  - Ét til tilmelding til nyhedsbrev
+
+  Ansøgningen kan først sendes, når samtykke er accepteret.
+
+  Ved submit samles alle data fra formData, oversættes til dansk hvor nødvendigt,
+  og sendes via EmailJS.
+
+  Under afsendelse deaktiveres knapperne og der vises en loading-tilstand,
+  så brugeren ikke kan sende dobbelt.
+
+  Når afsendelsen er gennemført, sendes brugeren videre til en success-/kvitteringsside.
+*/

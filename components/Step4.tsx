@@ -232,3 +232,22 @@ export default function Step4({ onNext, onBack, initialData, userType }: Step4Pr
     </div>
   );
 }
+
+/*
+  KOMMENTAR:
+  Step4 er kontakt- og adresse-trinnet i registreringsflowet.
+
+  Her indtaster brugeren:
+  - Adresse (vej, postnummer, by)
+  - Telefonnummer
+  - E-mail
+
+  Hvis userType er "pro", vises ekstra felter til fagperson:
+  - Navn og titel
+  - Institution/arbejdsplads
+
+  Validering (isInvalid) sikrer at alle obligatoriske felter er udfyldt,
+  og knappen låses indtil alt er korrekt udfyldt.
+
+  Data samles i handleNext() og sendes videre til næste step via onNext().
+*/

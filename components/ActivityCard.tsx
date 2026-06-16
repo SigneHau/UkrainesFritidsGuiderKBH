@@ -52,3 +52,8 @@ export function ActivityCard({ title, image }: ActivityProps) {
     </Card>
   );
 }
+
+// Denne komponent viser et aktivitetskort med billede, titel og en knap.
+// Den bruger Next.js Image til at optimere billedet og router til navigation.
+// Teksten på knappen ændres dynamisk afhængigt af valgt sprog (dansk/ukrainsk).
+// Når brugeren klikker på knappen, sendes de videre til registreringssiden.

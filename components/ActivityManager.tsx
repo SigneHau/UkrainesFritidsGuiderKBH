@@ -184,3 +184,12 @@ export default function ActivityManager() {
     </div>
   );
 }
+
+
+// Denne komponent styrer visning af aktiviteter opdelt i kategorier.
+// Brugeren kan filtrere aktiviteter via knapper, som skifter activeCategory state.
+// Aktiviteter filtreres dynamisk fra en data-liste og vises enten som karrusel (mobil) eller grid (desktop).
+// På mobil bruges en carousel med navigation og dots, mens desktop bruger et grid-layout.
+// useEffect bruges til at tracke carousel-position (currentSlide).
+// Komponenten bruger også router til navigation samt sprog-context til at skifte tekst mellem dansk og ukrainsk.
+// Hvis der ikke findes aktiviteter i en kategori, vises en tom-state besked.

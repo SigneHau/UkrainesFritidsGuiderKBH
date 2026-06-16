@@ -97,3 +97,11 @@ export default function Step2({ onNext, onBack, initialData }: Step2Props) {
     </div>
   );
 }
+
+/*
+  KOMMENTAR:
+  Step2 er valg-siden i registreringsflowet.
+  Brugeren vælger hvem de tilmelder for (sig selv, værge eller fagperson).
+  Valget gemmes i state og sendes videre til næste step via onNext().
+  UI ændrer styling afhængigt af valgt type (selectedType).
+*/

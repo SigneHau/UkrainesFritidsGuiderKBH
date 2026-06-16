@@ -44,3 +44,12 @@ export function useLanguage() {
   }
   return context
 }
+
+
+/*
+LanguageContext styrer hele appens sprogskift mellem ukrainsk (ua) og dansk (dk).
+Den gemmer det valgte sprog i state og synkroniserer det med localStorage, så valget huskes ved genindlæsning.
+useEffect henter gemt sprog ved første load.
+useLanguage hook bruges i komponenter for at tilgå og ændre sproget via setLanguage.
+Contexten sikrer global adgang til sprog uden prop drilling.
+*/

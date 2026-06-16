@@ -22,6 +22,9 @@ export default function ChatBot() {
 
   const { language } = useLanguage()
 
+  // Observerer når elementet kommer ind i viewporten.
+  // Bruges til først at vise chatbotten, når brugeren har scrollet ned til sektionen.
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -35,6 +38,7 @@ export default function ChatBot() {
     return () => observer.disconnect()
   }, [])
 
+  // Scroller automatisk til den nyeste besked hver gang messages ændres.
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" })
   }, [messages])
@@ -42,11 +46,15 @@ export default function ChatBot() {
   const handleSend = async () => {
     if (!input.trim()) return
 
+    // Opretter en ny beskedliste med brugerens seneste besked.
+    // På den måde sendes hele samtalehistorikken til API'et.
     const newMessages: Message[] = [...messages, { role: "user", content: input }]
     setMessages(newMessages)
     setInput("")
     setLoading(true)
 
+    // Sender hele samtalen til API-routen (/api/chat).
+    // I api/chat ligger logikken og prompten, som styrer hvordan Vera svarer brugeren.
     try {
       const res = await fetch("/api/chat", {
         method: "POST",
@@ -58,6 +66,7 @@ export default function ChatBot() {
 
       const data = await res.json()
 
+      // Tilføjer svaret fra API'et (Vera) til samtalen som en assistant-besked
       setMessages([
         ...newMessages,
         { role: "assistant", content: data.message }
@@ -117,7 +126,7 @@ export default function ChatBot() {
                     : "Hej! Spørg mig om fritidsguiderne 👋"}
                 </p>
               )}
-
+              
               {messages.map((msg, i) => (
                 <div
                   key={i}
@@ -188,3 +197,10 @@ export default function ChatBot() {
     </>
   )
 }
+
+
+// Denne komponent er en chatbot (Vera), hvor brugeren kan skrive beskeder og få svar fra et API.
+// Den gemmer hele samtalen i state og viser den som en chat-historik.
+// Når brugeren sender en besked, sendes hele samtalen til en API-route, som styrer Vera via en prompt.
+// Svaret fra API'et bliver tilføjet til chatten og vist i realtid.
+// Komponenten håndterer også loading, fejlbeskeder, sprog (dansk/ukrainsk), auto-scroll og animation ved scroll.

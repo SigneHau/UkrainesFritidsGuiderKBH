@@ -140,3 +140,10 @@ export default function Registration() {
     </section>
   );
 }
+
+/*
+Registration-komponentet viser en 3-trins proces for, hvordan brugeren bliver hjulpet med at finde en fritidsaktivitet.
+Indholdet skifter mellem ukrainsk og dansk via LanguageContext.
+Layoutet viser steps med nummer, titel og beskrivelse samt visuelle linjer mellem trinene (både mobil og desktop).
+Til sidst er der en CTA-knap, der sender brugeren videre til tilmeldingssiden via router.push().
+*/

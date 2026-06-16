@@ -191,3 +191,14 @@ export default function Step3({ onNext, onBack, initialData, userType }: Step3Pr
     </div>
   );
 }
+
+
+/*
+  KOMMENTAR:
+  Step3 er formular-trinnet hvor brugeren indtaster personoplysninger.
+  Her gemmes navn, køn og fødselsdato i local state, mens brugeren udfylder felterne.
+  Validering sikrer, at alle felter er udfyldt, før man kan gå videre.
+  Indholdet ændrer sig dynamisk afhængigt af userType (self / guardian / pro),
+  så teksten tilpasses om det er brugeren selv eller et barn/ung der registreres.
+  Data sendes videre til næste step via onNext().
+*/

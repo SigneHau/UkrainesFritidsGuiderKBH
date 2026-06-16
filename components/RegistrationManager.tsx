@@ -141,3 +141,12 @@ export default function RegistrationManager() {
     </div>
   );
 }
+
+
+/*
+RegistrationManager styrer hele multi-step registreringsflowet ved hjælp af state (currentStep) og formData.
+Den skifter mellem 7 steps og renderer forskellige Step-komponenter baseret på switch-case.
+useEffect sørger for at scroll position resettes til toppen ved hvert step-skift.
+Progress baren viser brugerens fremdrift gennem de 6 aktive steps, mens step 7 fungerer som en afslutnings-/success-side.
+Data fra hvert step gemmes i formData og sendes videre gennem flowet indtil endelig submit.
+*/

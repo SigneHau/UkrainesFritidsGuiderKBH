@@ -84,3 +84,10 @@ export default function Step1({ onNext }: Step1Props) {
     </div>
   );
 }
+
+/*
+Step1-komponentet er første trin i registreringsflowet og introducerer brugeren til processen.
+Indholdet skifter mellem ukrainsk og dansk via LanguageContext.
+Der vises en overskrift, brødtekst og en CTA-knap, som sender brugeren videre til næste step via onNext.
+Derudover er der en tilbage-knap, som sender brugeren tilbage til forsiden med window.location.
+*/

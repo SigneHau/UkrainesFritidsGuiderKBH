@@ -50,3 +50,11 @@ export default function VideoSektion() {
     </section>
   )
 }
+
+
+/*
+VideoSektion-komponentet viser en todelt sektion med tekst og video side om side.
+Teksten beskriver samarbejde med foreninger og skifter dynamisk mellem ukrainsk og dansk via LanguageContext.
+Videoen vises med native HTML5 <video>-element og har controls, responsivt layout og autoplay-forberedelse.
+Layoutet er responsivt, så tekst og video ligger i kolonner på desktop og stablet på mobil.
+*/

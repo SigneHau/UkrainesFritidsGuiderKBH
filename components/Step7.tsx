@@ -71,3 +71,22 @@ export default function Step7({ onReset }: Step7Props) {
     </div>
   );
 }
+
+/*
+  KOMMENTAR:
+  Step7 er den afsluttende bekræftelsesside i formularflowet, som vises efter en succesfuld indsendelse.
+
+  Her får brugeren en “tak for din ansøgning”-besked samt information om,
+  at en fritidsguide vil kontakte dem inden for en fast tidsramme.
+
+  Siden viser også kontaktinformation til relevante medarbejdere,
+  så brugeren har mulighed for at tage direkte kontakt ved behov.
+
+  Indholdet er bilingual (ukrainsk/dansk) og tilpasses delvist via language-context.
+
+  Brugeren kan ikke ændre data her, da alle steps er afsluttet.
+  I stedet fungerer siden som en ren “finish / success screen”.
+
+  Der er én primær handling:
+  - onReset(): nulstiller flowet og sender brugeren tilbage til start eller forside
+*/

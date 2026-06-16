@@ -76,3 +76,10 @@ export function ActivityDetailCard({ title, image, description }: ActivityDetail
     </Card>
   );
 }
+
+// Denne komponent viser et detaljeret aktivitetskort med billede, titel, beskrivelse og knap.
+// Titlen bliver opdelt i ukrainsk og dansk ved at splitte tekststrengen.
+// Billedet bliver også splittet for at adskille URL og position (object-position).
+// Next.js Image bruges til optimering og styling af billedet.
+// Knappen navigerer brugeren til registreringssiden ved klik.
+// Komponenten er bygget til at vise mere detaljeret information end et almindeligt kort.

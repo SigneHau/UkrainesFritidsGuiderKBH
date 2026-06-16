@@ -354,3 +354,14 @@ export default function Step5({ onBack, onNext, initialData }: Step5Props) {
     </div>
   );
 }
+
+/*
+  KOMMENTAR:
+  Step5 er formular-trinnet hvor brugeren vælger aktiviteter og niveau.
+  Her kan brugeren tilføje flere sportsgrene, vælge underkategorier og angive niveau.
+  Data gemmes i local state som både faste valg (sportsgrene + niveau) og fritekst (“Andet”).
+  Listen opdateres dynamisk, så brugeren kan tilføje og fjerne valg løbende.
+  Validering sikrer, at mindst én aktivitet er valgt, før man kan gå videre.
+  Indholdet er delt i to dele: faste sportsvalg og egne fritekst-inputs.
+  Data sendes videre til næste step via onNext().
+*/

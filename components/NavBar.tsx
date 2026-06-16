@@ -74,3 +74,12 @@ export default function NavBar () {
     </header>
   )
 }
+
+
+// Denne komponent er en responsiv navigation (navbar) til siden.
+// Den viser logo, navigation-links og sprog-toggle på desktop, samt en hamburger-menu på mobil.
+// useState bruges til at styre om mobil-menuen er åben eller lukket.
+// På mobil bruges en Sheet-komponent til at vise en slide-in menu fra højre.
+// LanguageToggle ændrer globalt sprog via LanguageContext.
+// Next.js Link bruges til navigation mellem sider og eksterne links.
+// Komponenten er sticky, så den bliver siddende øverst ved scroll.

@@ -149,3 +149,9 @@ export default function Newsletter() {
     </section>
   )
 }
+
+/*
+Newsletter-komponentet håndterer tilmelding til et nyhedsbrev ved hjælp af react-hook-form, zod og Supabase.
+Det validerer e-mail input, gemmer brugeren i databasen og viser forskellige statusbeskeder (loading, success, error og duplicate).
+Tekster og fejlbeskeder skifter dynamisk mellem dansk og ukrainsk via LanguageContext.
+*/

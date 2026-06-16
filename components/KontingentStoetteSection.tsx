@@ -87,3 +87,11 @@ export default function KontingentStoetteSection() {
     </section>
   )
 }
+
+
+// Denne komponent viser en informationssektion om økonomisk kontingentstøtte.
+// Layoutet er opdelt i to kolonner: et ikon til venstre og tekst + knap til højre.
+// Teksten skifter dynamisk mellem dansk og ukrainsk via language context.
+// Der er separate overskrifter til mobil og desktop for bedre responsivt design.
+// Knappen åbner et eksternt link i en ny fane med mere information.
+// Komponenten bruges til at informere brugeren om støtteordninger i kommunen.

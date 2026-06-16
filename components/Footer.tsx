@@ -109,3 +109,11 @@ export default function Footer() {
     </footer>
   )
 }
+
+
+// Denne komponent er et footer-layout for siden med Københavns Kommune branding.
+// Den viser logo, kontaktinformation og flere navigationslinks opdelt i tre kolonner.
+// Layoutet er lavet med et responsivt grid, som ændrer sig fra én kolonne på mobil til tre på desktop.
+// Links genereres dynamisk ved at mappe gennem arrays for at gøre koden mere genbrugelig.
+// Next.js Link bruges til navigation, og ikon-komponenter bruges til visuel understøttelse.
+// Footer’en fungerer som et fast informations- og genvejsområde til brugeren.

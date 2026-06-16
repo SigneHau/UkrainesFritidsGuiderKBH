@@ -103,3 +103,12 @@ export default function Hero() {
     </section>
   )
 }
+
+
+// Denne komponent er et hero-banner med et automatisk skiftende slideshow af billeder.
+// useState styrer hvilket billede der vises, og useEffect skifter billede hvert 5. sekund.
+// Hero-sektionen indeholder en tekstboks med overskrift, brødtekst og CTA-knap.
+// Teksten skifter sprog dynamisk via language context (dansk/ukrainsk).
+// Next.js Image bruges til optimeret visning af billeder med forskellige object-position styles.
+// Knappen navigerer brugeren til registreringssiden via router.push().
+// Komponenten fungerer som landing-page introduktion til siden og FritidsGuiderne.

@@ -86,3 +86,12 @@ export default function FritidsguiderSection() {
     </section>
   )
 }
+
+
+// Denne komponent viser en informationssektion om FritidsGuiderne.
+// Layoutet er opdelt i to kolonner med et ikon/illustration til venstre og tekst + knap til højre.
+// Teksten skifter dynamisk mellem dansk og ukrainsk via language context.
+// Der er separate overskrifter til mobil og desktop for at sikre responsivt design.
+// Next.js Image bruges til at optimere og vise kompas-illustrationen.
+// Knappen åbner et eksternt link i en ny fane med mere information om FritidsGuiderne.
+// Komponenten fungerer som en introduktion til hjælpetilbuddet for brugeren.

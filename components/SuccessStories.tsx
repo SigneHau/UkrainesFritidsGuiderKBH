@@ -107,3 +107,10 @@ export default function SuccessStories() {
     </section>
   )
 }
+
+/*
+SuccessStories-komponentet viser et carousel med brugercitater (succeshistorier) fra familier.
+Indholdet skifter dynamisk mellem ukrainsk og dansk via LanguageContext.
+Carousel er bygget med shadcn Carousel og understøtter looping og navigation via API.
+Der er custom navigation pile på mobil og responsivt layout, hvor flere kort vises på større skærme.
+*/

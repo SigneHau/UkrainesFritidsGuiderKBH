@@ -36,3 +36,10 @@ export default function LanguageToggle() {
     </div>
   )
 }
+
+
+// Denne komponent er en sprog-toggle, som giver brugeren mulighed for at skifte mellem ukrainsk (UKR) og dansk (DNK).
+// Den bruger LanguageContext til at hente 'language' og funktionen 'setLanguage'.
+// Når brugeren klikker på en knap, opdateres global state, så hele siden skifter sprog.
+// Det aktive sprog styles visuelt med farve, fed skrift og underline.
+// Komponenten påvirker dermed hele applikationens sprogvisning dynamisk.

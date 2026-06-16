@@ -250,3 +250,13 @@ export function ActivityOverview() {
     </div>
   );
 }
+
+
+
+// Denne komponent viser et samlet overblik over alle aktiviteter.
+// Brugeren kan søge i aktiviteter via et søgefelt, som filtrerer data dynamisk.
+// Aktiviteterne bliver vist som ActivityDetailCard komponenter med titel, billede og beskrivelse.
+// Beskrivelsen skifter sprog afhængigt af valgt language (dansk/ukrainsk).
+// Billedet bliver delt op for at håndtere URL og object-position korrekt.
+// Hvis ingen aktiviteter matcher søgningen, vises en tom-state besked.
+// Der er navigation tilbage til forsiden via router.push().
