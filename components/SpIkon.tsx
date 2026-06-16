@@ -27,7 +27,7 @@ export default function SpIkon() {
             className="flex items-center justify-center gap-2 px-5 py-3 rounded-none font-medium text-white bg-[#7C4BFF] hover:bg-[#D8C9FF] hover:text-[#000c2e] transition-all duration-200 shadow-sm self-start md:self-auto"
           >
             <Download size={18} />
-            Download (.ZIP)
+            Download alle (.ZIP)
           </a>
         </div>
 

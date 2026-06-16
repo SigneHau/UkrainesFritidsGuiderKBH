@@ -55,7 +55,7 @@ export default function SpFlyerRollup() {
               className="flex items-center gap-2 text-xs text-[#7C4BFF] hover:underline"
             >
               <Download size={14} />
-              Download
+              Download alle
             </a>
           </div>
 
